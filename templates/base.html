@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/">Home</a>
+    </nav>
+    <main>
+        {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+                <section class="message">
+                {% for category, msg in messages %} 
+                    <p class="error">{{category}} - {{msg}}</p><br>
+                {% endfor %}
+                </section>
+            {% endif %}
+        {% endwith %}
+        {% block content %} {% endblock %}
+    </main>
+    <footer>
+        This is a footer
+    </footer>
+</body>
+</html>

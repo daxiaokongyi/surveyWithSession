@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Thanks Page{% endblock %}
+
+{% block content %}
+    <h1 class="thank">Your survey was completed. Thank you for your time.</h1><br>
+    <p class="thankp">Here is the Summary of your Survey </p><br>
+    <ul class="thankul">
+        {% for question in questions %}
+            <li><b>{{question.question}}</b> {{responses[loop.index0]['choice']}} 
+                {% if responses[loop.index0]['text'] %}
+                    <i>{{responses[loop.index0]['text']}}</i>
+                {% endif %}
+            </li>
+            
+        {% endfor %}
+    </ul>
+{% endblock %}
